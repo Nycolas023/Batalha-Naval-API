@@ -1,0 +1,6 @@
+@Batalha_Naval_API_HostAddress = http://localhost:5237
+
+GET {{Batalha_Naval_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
