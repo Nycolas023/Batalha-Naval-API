@@ -1,4 +1,4 @@
-﻿using Batalha_Naval_API.Model;
+﻿using Batalha_Naval_API.Models;
 
 namespace Batalha_Naval_API.Interfaces
 {
