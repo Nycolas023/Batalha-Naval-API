@@ -15,8 +15,8 @@ namespace Batalha_Naval_API.Services
         public UsuarioService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _supabaseUrl = configuration["Supabase:Url"]!;
-            _anonKey = configuration["Supabase:AnonKey"]!;
+           // _supabaseUrl = configuration["Supabase:Url"]!;
+           // _anonKey = configuration["Supabase:AnonKey"]!;
         }
 
         public async Task<UsuarioResponseDTO?> CriarUsuarioAsync(UsuarioCreateDTO dto)

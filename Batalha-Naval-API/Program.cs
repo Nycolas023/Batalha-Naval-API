@@ -30,6 +30,15 @@ builder.Services.AddHttpClient<UsuarioService>((client) =>
     client.DefaultRequestHeaders.Add("apikey", supabaseKey);
 });
 
+builder.Services.AddHttpClient<BombService>((client) =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
+
+
+
 var app = builder.Build();
 
 // Middleware padrão

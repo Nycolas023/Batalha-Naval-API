@@ -24,7 +24,7 @@ namespace Batalha_Naval_API.Controllers
             if (usuario == null)
                 return BadRequest("Erro ao criar usuário.");
 
-            return Ok(usuario);
+            return Ok("Usuario cadastrado com sucesso!");
         }
 
         // POST: api/usuario/login
