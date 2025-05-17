@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Batalha_Naval_API.DTOs
 {
-    public class ShipResponseDTO
+    public class ShipCreateDTO
     {
         [JsonPropertyName("ship_name")]
         public string ShipName { get; set; } = string.Empty;
@@ -12,5 +12,8 @@ namespace Batalha_Naval_API.DTOs
 
         [JsonPropertyName("ship_price")]
         public decimal ShipPrice { get; set; }
+
+        [JsonPropertyName("theme_id")]
+        public int ThemeId { get; set; }
     }
 }

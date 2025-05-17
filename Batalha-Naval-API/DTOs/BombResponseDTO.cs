@@ -12,5 +12,8 @@ namespace Batalha_Naval_API.DTOs
 
         [JsonPropertyName("bomb_price")]
         public decimal BombPrice { get; set; }
+
+        [JsonPropertyName("bomb_image")]
+        public string? BombImage { get; set; } // agora incluído
     }
 }

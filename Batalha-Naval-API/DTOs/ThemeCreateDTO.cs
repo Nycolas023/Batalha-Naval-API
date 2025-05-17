@@ -1,10 +1,9 @@
 using System.Text.Json.Serialization;
 
-public class ThemeResponseDTO
+namespace Batalha_Naval_API.DTOs
 {
-    [JsonPropertyName("theme_id")]
-    public int ThemeId { get; set; }
-
+public class ThemeCreateDTO
+{
     [JsonPropertyName("theme_name")]
     public string ThemeName { get; set; } = string.Empty;
 
@@ -13,4 +12,6 @@ public class ThemeResponseDTO
 
     [JsonPropertyName("theme_price")]
     public decimal ThemePrice { get; set; }
+}
+
 }

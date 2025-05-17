@@ -1,11 +1,19 @@
-namespace Batalha_Naval_API.DTOs
+using System.Text.Json.Serialization;
+
+public class MatchCreateDTO
 {
-    public class MatchCreateDTO
-    {
-        public int UsersId { get; set; }
-        public int MatchVictory { get; set; }
-        public int MatchDefeat { get; set; }
-        public int MatchDraw { get; set; }
-        public int BoatsSunk { get; set; }
-    }
+    [JsonPropertyName("match_victory")]
+    public int MatchVictory { get; set; }
+
+    [JsonPropertyName("match_defeat")]
+    public int MatchDefeat { get; set; }
+
+    [JsonPropertyName("match_draw")]
+    public int MatchDraw { get; set; }
+
+    [JsonPropertyName("user_id")]
+    public int UserId { get; set; }
+
+    [JsonPropertyName("match_boats_sunk")]
+    public int MatchBoatsSunk { get; set; }
 }

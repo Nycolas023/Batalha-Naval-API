@@ -27,6 +27,18 @@ namespace Batalha_Naval_API.Controllers
             return Ok("Usuario cadastrado com sucesso!");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            var sucesso = await _usuarioService.ExcluirUsuarioAsync(id);
+
+            if (!sucesso)
+                return NotFound("Usuário não encontrado ou erro ao excluir.");
+
+            return Ok("Usuário excluído com sucesso.");
+        }
+
+
         // POST: api/usuario/login
         [HttpPost("login")]
         public async Task<ActionResult<UsuarioResponseDTO>> Login([FromBody] UsuarioLoginDTO dto)

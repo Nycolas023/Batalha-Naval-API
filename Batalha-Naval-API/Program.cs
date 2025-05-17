@@ -37,7 +37,26 @@ builder.Services.AddHttpClient<BombService>((client) =>
     client.DefaultRequestHeaders.Add("apikey", supabaseKey);
 });
 
+builder.Services.AddHttpClient<MatchService>((client) =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
 
+builder.Services.AddHttpClient<ShipService>((client) =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
+
+builder.Services.AddHttpClient<ThemeService>((client) =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
 
 var app = builder.Build();
 

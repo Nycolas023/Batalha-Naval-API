@@ -21,7 +21,8 @@ namespace Batalha_Naval_API.Services
             request.Content = JsonContent.Create(new
             {
                 bomb_name = dto.BombName,
-                bomb_price = dto.BombPrice
+                bomb_price = dto.BombPrice,
+                bomb_image = dto.BombImage // novo campo incluído
             });
 
             var response = await _httpClient.SendAsync(request);
@@ -30,6 +31,7 @@ namespace Batalha_Naval_API.Services
 
             return response.IsSuccessStatusCode;
         }
+
 
 
         public async Task<List<BombResponseDTO>> BuscarTodasAsync()
@@ -42,5 +44,40 @@ namespace Batalha_Naval_API.Services
             var bombas = await response.Content.ReadFromJsonAsync<List<BombResponseDTO>>();
             return bombas ?? new List<BombResponseDTO>();
         }
+
+        public async Task<List<BombInventarioDTO>> ListarInventarioAsync(int userId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/rest/v1/bomb_quantity?user_id=eq.{userId}");
+
+            var response = await _httpClient.SendAsync(request);
+            string responseBody = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"SUPABASE INVENTARIO: {(int)response.StatusCode} - {responseBody}");
+
+            if (!response.IsSuccessStatusCode)
+                return new List<BombInventarioDTO>();
+
+            var lista = await response.Content.ReadFromJsonAsync<List<BombInventarioDTO>>();
+            return lista ?? new List<BombInventarioDTO>();
+        }
+
+        public async Task<string?> ComprarAsync(BombCompraDTO dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "/rest/v1/rpc/comprar_bomba");
+
+            request.Content = JsonContent.Create(new
+            {
+                p_users_id = dto.UsersId,
+                p_bomb_id = dto.BombId
+            });
+
+            var response = await _httpClient.SendAsync(request);
+            string resposta = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine($"SUPABASE COMPRA BOMBA: {(int)response.StatusCode} - {resposta}");
+
+            return response.IsSuccessStatusCode ? resposta : null;
+        }
+
+
     }
 }

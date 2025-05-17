@@ -32,5 +32,30 @@ namespace Batalha_Naval_API.Controllers
             return Ok(new { mensagem = "Bomba cadastrada com sucesso!" });
         }
 
+        /// <summary>
+        /// Retorna o inventário de bombas de um jogador
+        /// </summary>
+        [HttpGet("inventario/{userId}")]
+        public async Task<ActionResult<List<BombInventarioDTO>>> ObterInventario(int userId)
+        {
+            var inventario = await _bombService.ListarInventarioAsync(userId);
+            return Ok(inventario);
+        }
+
+        /// <summary>
+        /// Compra uma bomba (desconta saldo e incrementa inventário)
+        /// </summary>
+        [HttpPost("comprar")]
+        public async Task<IActionResult> ComprarBomba([FromBody] BombCompraDTO dto)
+        {
+            var resultado = await _bombService.ComprarAsync(dto);
+            if (resultado == null)
+                return BadRequest("Erro ao comprar bomba (saldo insuficiente ou falha no servidor).");
+
+            return Ok(new { mensagem = resultado });
+        }
+
+
+
     }
 }

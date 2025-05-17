@@ -48,6 +48,21 @@ namespace Batalha_Naval_API.Services
             };
         }
 
+        public async Task<bool> ExcluirUsuarioAsync(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"{_supabaseUrl}/rest/v1/users?id=eq.{id}");
+
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _anonKey);
+            request.Headers.Add("apikey", _anonKey);
+
+            var response = await _httpClient.SendAsync(request);
+            Console.WriteLine($"SUPABASE DELETE: {(int)response.StatusCode}");
+
+            return response.IsSuccessStatusCode;
+        }
+
+
+
 
         public async Task<UsuarioResponseDTO?> Login(UsuarioLoginDTO dto)
         {
