@@ -3,11 +3,11 @@ using Batalha_Naval_API.Models.CreateModels;
 
 namespace Batalha_Naval_API.Services2
 {
-    public class ProcCreationService
+    public class CadastroService
     {
         private readonly HttpClient _httpClient;
 
-        public ProcCreationService(HttpClient httpClient)
+        public CadastroService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

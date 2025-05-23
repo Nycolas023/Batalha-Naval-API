@@ -59,14 +59,23 @@ builder.Services.AddHttpClient<ThemeService>((client) =>
     client.DefaultRequestHeaders.Add("apikey", supabaseKey);
 });
 
-builder.Services.AddHttpClient<ProcService>(client =>
+
+
+builder.Services.AddHttpClient<ConsultaService>(client =>
 {
     client.BaseAddress = new Uri(supabaseUrl!);
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
     client.DefaultRequestHeaders.Add("apikey", supabaseKey);
 });
 
-builder.Services.AddHttpClient<ProcCreationService>(client =>
+builder.Services.AddHttpClient<CadastroService>(client =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
+
+builder.Services.AddHttpClient<CompraService>(client =>
 {
     client.BaseAddress = new Uri(supabaseUrl!);
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
