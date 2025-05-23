@@ -1,4 +1,5 @@
 using Batalha_Naval_API.Services;
+using Batalha_Naval_API.Services2;
 using Supabase;
 using System.Net.Http.Headers;
 
@@ -57,6 +58,21 @@ builder.Services.AddHttpClient<ThemeService>((client) =>
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
     client.DefaultRequestHeaders.Add("apikey", supabaseKey);
 });
+
+builder.Services.AddHttpClient<ProcService>(client =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
+
+builder.Services.AddHttpClient<ProcCreationService>(client =>
+{
+    client.BaseAddress = new Uri(supabaseUrl!);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
+    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
+});
+
 
 var app = builder.Build();
 

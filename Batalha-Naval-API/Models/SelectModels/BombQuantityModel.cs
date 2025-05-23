@@ -1,4 +1,4 @@
-namespace Batalha_Naval_API.Models
+namespace Batalha_Naval_API.Models.SelectModels
 {
     public class BombQuantityModel
     {
