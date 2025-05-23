@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs2\**" />
+    <Content Remove="DTOs2\**" />
+    <EmbeddedResource Remove="DTOs2\**" />
+    <None Remove="DTOs2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Supabase" Version="1.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
@@ -25,10 +32,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DTOs2\" />
   </ItemGroup>
 
 </Project>

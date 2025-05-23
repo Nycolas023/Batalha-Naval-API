@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Batalha_Naval_API.Controllers_2
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class ProcCreationController : ControllerBase
+    [Route("api/[controller]")]
+    public class CadastroController : ControllerBase
     {
-        private readonly ProcCreationService _procCreationService;
+        private readonly CadastroService _procCreationService;
 
-        public ProcCreationController(ProcCreationService procCreationService)
+        public CadastroController(CadastroService procCreationService)
         {
             _procCreationService = procCreationService;
         }

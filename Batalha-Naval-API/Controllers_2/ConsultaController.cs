@@ -1,16 +1,18 @@
-﻿using Batalha_Naval_API.Models.SelectModels;
+﻿using System.Text.Json.Serialization;
+using Batalha_Naval_API.Models.SelectModels;
 using Batalha_Naval_API.Services2;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Batalha_Naval_API.Controllers_2
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProcController : ControllerBase
+    public class ConsultaController : ControllerBase
     {
-        private readonly ProcService _procService;
+        private readonly ConsultaService _procService;
 
-        public ProcController(ProcService procService)
+        public ConsultaController(ConsultaService procService)
         {
             _procService = procService;
         }
@@ -39,8 +41,6 @@ namespace Batalha_Naval_API.Controllers_2
             return Ok(tema);
         }
 
-
-        //Login
         [HttpPost("usuario")]
         public async Task<ActionResult<UserModel>> RetornaUsuario([FromBody] LoginDTO login)
         {
@@ -52,7 +52,10 @@ namespace Batalha_Naval_API.Controllers_2
 
     public class LoginDTO
     {
+        [JsonPropertyName("login")]
         public string Login { get; set; } = string.Empty;
+
+        [JsonPropertyName("password")]
         public string Password { get; set; } = string.Empty;
     }
 

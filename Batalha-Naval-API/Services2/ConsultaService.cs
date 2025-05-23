@@ -1,11 +1,12 @@
-﻿using Batalha_Naval_API.Models.SelectModels;
+﻿using Batalha_Naval_API.DTOs;
+using Batalha_Naval_API.Models.SelectModels;
 namespace Batalha_Naval_API.Services2
 {
-    public class ProcService
+    public class ConsultaService
     {
         private readonly HttpClient _httpClient;
 
-        public ProcService(HttpClient httpClient)
+        public ConsultaService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
@@ -83,5 +84,29 @@ namespace Batalha_Naval_API.Services2
                 return null;
             }
         }
+
+
+        //public async Task<UsuarioResponseDTO?> Login(UsuarioLoginDTO dto)
+        //{
+        //    var request = new HttpRequestMessage(HttpMethod.Post, "/rest/v1/rpc/retorna_usuario");
+
+        //    request.Content = JsonContent.Create(new
+        //    {
+        //        p_login = dto.Login,
+        //        p_password = dto.Password
+        //    });
+
+        //    var response = await _httpClient.SendAsync(request);
+
+        //    string responseBody = await response.Content.ReadAsStringAsync();
+        //    Console.WriteLine($"SUPABASE LOGIN: {(int)response.StatusCode} - {responseBody}");
+
+        //    if (!response.IsSuccessStatusCode)
+        //        return null;
+
+        //    var lista = await response.Content.ReadFromJsonAsync<List<UsuarioResponseDTO>>();
+        //    var usuario = lista?.FirstOrDefault();
+        //    return usuario;
+        //}
     }
 }
