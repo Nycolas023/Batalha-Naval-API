@@ -1,14 +1,6 @@
-﻿using Batalha_Naval_API.Backup.DTOs;
-using Batalha_Naval_API.Controllers;
-using Batalha_Naval_API.DTOs;
+﻿using Batalha_Naval_API.DTOs;
 using Batalha_Naval_API.Models.SelectModels;
-using Microsoft.AspNetCore.Http.HttpResults;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 namespace Batalha_Naval_API.Services
 {
     public class ConsultaService
