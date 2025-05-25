@@ -33,7 +33,8 @@ namespace Batalha_Naval_API.Services
             {
                 p_image = ship.Image,
                 p_name = ship.Name,
-                p_desc = ship.Desc
+                p_desc = ship.Desc,
+                p_theme_id = ship.Theme_id,
             });
         }
 
@@ -55,7 +56,6 @@ namespace Batalha_Naval_API.Services
                 p_image = theme.Image,
                 p_name = theme.Name,
                 p_price = theme.Price,
-                p_ship_id = theme.ShipId
             });
         }
     }

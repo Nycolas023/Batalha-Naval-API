@@ -5,6 +5,7 @@
         public string Image { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Desc { get; set; } = null!;
+        public int Theme_id { get; set; } = 0!;
     }
 
 }
