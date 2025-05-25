@@ -16,7 +16,5 @@ namespace Batalha_Naval_API.Models.SelectModels
         [JsonPropertyName("theme_price")]
         public double ThemePrice { get; set; }
 
-        [JsonPropertyName("ship_id")]
-        public int ShipId { get; set; }
     }
 }

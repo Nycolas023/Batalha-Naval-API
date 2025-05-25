@@ -15,6 +15,9 @@ namespace Batalha_Naval_API.Models.SelectModels
 
         [JsonPropertyName("ship_desc")]
         public string ShipDesc { get; set; } = string.Empty;
+
+        [JsonPropertyName("theme_id")]
+        public int ThemeId { get; set; }
     }
 
 }
