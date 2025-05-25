@@ -1,6 +1,6 @@
 ﻿using Batalha_Naval_API.Models.Compra;
 
-namespace Batalha_Naval_API.Services2
+namespace Batalha_Naval_API.Services
 {
     public class CompraService
     {

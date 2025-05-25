@@ -20,7 +20,7 @@ namespace Batalha_Naval_API.Models.SelectModels
         public int MoneyAmount { get; set; }
 
         [JsonPropertyName("user_present_theme")]
-        public int PresentTheme { get; set; }
+        public string?  PresentTheme { get; set; }
 
         [JsonPropertyName("user_match_victory")]
         public int MatchVictory { get; set; }
