@@ -33,12 +33,12 @@ builder.Services.AddHttpClient<CadastroService>(client =>
     client.DefaultRequestHeaders.Add("apikey", supabaseKey);
 });
 
-builder.Services.AddHttpClient<CompraService>(client =>
-{
-    client.BaseAddress = new Uri(supabaseUrl!);
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", supabaseKey);
-    client.DefaultRequestHeaders.Add("apikey", supabaseKey);
-});
+builder.Services.AddSingleton(supabaseClient);
+builder.Services.AddScoped<CompraService>();
+
+
+builder.Services.AddSingleton(supabaseClient);
+builder.Services.AddScoped<PartidasJogadasService>();
 
 builder.Services.AddSingleton(supabaseClient);
 builder.Services.AddScoped<DeletesService>();
