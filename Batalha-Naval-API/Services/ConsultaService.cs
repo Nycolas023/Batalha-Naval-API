@@ -1,6 +1,15 @@
-﻿using Batalha_Naval_API.DTOs;
+﻿using Batalha_Naval_API.Backup.DTOs;
+using Batalha_Naval_API.Controllers;
+using Batalha_Naval_API.DTOs;
 using Batalha_Naval_API.Models.SelectModels;
-namespace Batalha_Naval_API.Services2
+using Microsoft.AspNetCore.Http.HttpResults;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
+namespace Batalha_Naval_API.Services
 {
     public class ConsultaService
     {
@@ -63,15 +72,24 @@ namespace Batalha_Naval_API.Services2
             }
         }
 
-        public async Task<UserModel?> RetornaUsuarioAsync(string login, string senha)
+        public async Task<UserModel?> RetornaUsuarioAsync(LoginDTO dto)
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/retorna_usuario", new
+
+                var jsonBody = new
                 {
-                    p_user_login = login,
-                    p_user_password = senha
-                });
+                    p_user_login = dto.Login,
+                    p_user_password = dto.Password
+                };
+
+                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/retorna_usuario", jsonBody);
+
+
+                Console.WriteLine(JsonSerializer.Serialize(jsonBody));
+
+
+                Console.WriteLine(response);
 
                 if (!response.IsSuccessStatusCode)
                     return null;
@@ -79,34 +97,40 @@ namespace Batalha_Naval_API.Services2
                 var resultado = await response.Content.ReadFromJsonAsync<List<UserModel>>();
                 return resultado?.FirstOrDefault();
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
             }
+
+
+
+            //public async Task<UsuarioResponseDTO?> Login(LoginDTO dto)
+            //{
+            //    var request = new HttpRequestMessage(HttpMethod.Post, "/rest/v1/rpc/retorna_usuario");
+            //    request.Content = JsonContent.Create(new
+            //    {
+            //        p_user_login = dto.Login,
+            //        p_user_password = dto.Password
+            //    });
+
+            //    var response = await _httpClient.SendAsync(request);
+
+            //    Console.WriteLine(response);
+            //    string responseBody = await response.Content.ReadAsStringAsync();
+            //    Console.WriteLine($"SUPABASE LOGIN: {(int)response.StatusCode} - {responseBody}");
+
+            //    if (!response.IsSuccessStatusCode)
+            //        return null;
+
+            //    var lista = await response.Content.ReadFromJsonAsync<List<UsuarioResponseDTO>>();
+            //    var usuario = lista?.FirstOrDefault();
+            //    return usuario;
+            //}
+
+
         }
-
-
-        //public async Task<UsuarioResponseDTO?> Login(UsuarioLoginDTO dto)
-        //{
-        //    var request = new HttpRequestMessage(HttpMethod.Post, "/rest/v1/rpc/retorna_usuario");
-
-        //    request.Content = JsonContent.Create(new
-        //    {
-        //        p_login = dto.Login,
-        //        p_password = dto.Password
-        //    });
-
-        //    var response = await _httpClient.SendAsync(request);
-
-        //    string responseBody = await response.Content.ReadAsStringAsync();
-        //    Console.WriteLine($"SUPABASE LOGIN: {(int)response.StatusCode} - {responseBody}");
-
-        //    if (!response.IsSuccessStatusCode)
-        //        return null;
-
-        //    var lista = await response.Content.ReadFromJsonAsync<List<UsuarioResponseDTO>>();
-        //    var usuario = lista?.FirstOrDefault();
-        //    return usuario;
-        //}
     }
 }

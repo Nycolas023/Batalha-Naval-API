@@ -1,8 +1,8 @@
 ﻿using Batalha_Naval_API.Models.Compra;
-using Batalha_Naval_API.Services2;
+using Batalha_Naval_API.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Batalha_Naval_API.Controllers_2
+namespace Batalha_Naval_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

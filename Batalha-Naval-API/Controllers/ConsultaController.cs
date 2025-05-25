@@ -1,10 +1,10 @@
 ﻿using System.Text.Json.Serialization;
+using Batalha_Naval_API.DTOs;
 using Batalha_Naval_API.Models.SelectModels;
-using Batalha_Naval_API.Services2;
-using Microsoft.AspNetCore.Authorization;
+using Batalha_Naval_API.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Batalha_Naval_API.Controllers_2
+namespace Batalha_Naval_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -44,19 +44,21 @@ namespace Batalha_Naval_API.Controllers_2
         [HttpPost("usuario")]
         public async Task<ActionResult<UserModel>> RetornaUsuario([FromBody] LoginDTO login)
         {
-            var usuario = await _procService.RetornaUsuarioAsync(login.Login, login.Password);
+            var usuario = await _procService.RetornaUsuarioAsync(login);
             if (usuario == null) return Unauthorized();
             return Ok(usuario);
         }
+
+
+        //[HttpPost("login")]
+        //public async Task<ActionResult<UserModel>> Login([FromBody] LoginDTO dto)
+        //{
+        //    var usuario = await _procService.Login(dto);
+
+        //    if (usuario == null)
+        //        return Unauthorized("Login ou senha inválidos.");
+
+        //    return Ok(usuario);
+        //}
     }
-
-    public class LoginDTO
-    {
-        [JsonPropertyName("login")]
-        public string Login { get; set; } = string.Empty;
-
-        [JsonPropertyName("password")]
-        public string Password { get; set; } = string.Empty;
-    }
-
 }

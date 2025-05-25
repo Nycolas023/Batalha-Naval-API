@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using Batalha_Naval_API.Models.CreateModels;
 
-namespace Batalha_Naval_API.Services2
+namespace Batalha_Naval_API.Services
 {
     public class CadastroService
     {
