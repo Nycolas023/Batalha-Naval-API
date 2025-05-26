@@ -18,8 +18,21 @@ namespace Batalha_Naval_API.Controllers
         [HttpPost("tema")]
         public async Task<IActionResult> PostCompraTema([FromBody] CompraTemaModel model)
         {
-            await _service.PostCompraTema(model);
-            return Ok(new { message = "Tema comprado com sucesso" });
+            try
+            {
+                await _service.PostCompraTema(model);
+                return Ok(new { message = "Tema comprado com sucesso" });
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("já possui o tema"))
+                {
+                    return BadRequest(new { error = "Usuário já comprou este tema." });
+                }
+
+                // Erro inesperado
+                return StatusCode(500, new { error = "Erro ao processar a compra do tema.", detalhes = ex.Message });
+            }
         }
 
         [HttpPost("moedas")]
