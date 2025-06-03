@@ -171,11 +171,10 @@ namespace Batalha_Naval_API.Services
             var jsonBody = new
             {
                 p_user_id = dto.IdUsuario,
-                p_theme_id = dto.IdTema
             };
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/verificar_tema_comprado", jsonBody);
+                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/retornar_temas_comprados", jsonBody);
                 if (!response.IsSuccessStatusCode)
                     return null;
 
