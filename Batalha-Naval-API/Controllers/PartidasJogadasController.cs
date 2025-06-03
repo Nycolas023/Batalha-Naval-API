@@ -15,7 +15,7 @@ namespace Batalha_Naval_API.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> AtualizarResultados([FromBody] PartidasJogadasModel model)
         {
             await _service.AtualizarResultados(model);

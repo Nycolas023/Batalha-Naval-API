@@ -17,6 +17,37 @@ namespace Batalha_Naval_API.Controllers
             _procService = procService;
         }
 
+        [HttpGet("todosTemas")]
+        public async Task<ActionResult<ThemeModel>> RetornaTodosTemas()
+        {
+            var tema = await _procService.RetornaTodosTemasAsync();
+            if (tema == null) return NotFound();
+            return Ok(tema);
+        }
+
+        [HttpGet("todosBarcos")]
+        public async Task<ActionResult<ShipModel>> RetornaTodosBarcos()
+        {
+            var ship = await _procService.RetornaTodosBarcosAsync();
+            if (ship == null) return NotFound();
+            return Ok(ship);
+        }
+
+        [HttpGet("todasBombas")]
+        public async Task<ActionResult<BombModel>> RetornaTodasBombas()
+        {
+            var bomb = await _procService.RetornaTodasBombasAsync();
+            if (bomb == null) return NotFound();
+            return Ok(bomb);
+        }
+        [HttpGet("todosUsuarios")]
+        public async Task<ActionResult<UserModel>> RetornaTodosUsuarios()
+        {
+            var user = await _procService.RetornaTodosUsuariosAsync();
+            if (user == null) return NotFound();
+            return Ok(user);
+        }
+
         [HttpGet("barco/{id}")]
         public async Task<ActionResult<ShipModel>> RetornaBarco(int id)
         {

@@ -1,5 +1,6 @@
 ﻿using Batalha_Naval_API.DTOs;
 using Batalha_Naval_API.Models.SelectModels;
+using System.Net.Http.Json;
 using System.Text.Json;
 namespace Batalha_Naval_API.Services
 {
@@ -96,33 +97,73 @@ namespace Batalha_Naval_API.Services
                     return null;
                 }
             }
+        }
 
+        public async Task<List<ThemeModel>?> RetornaTodosTemasAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("/rest/v1/rpc/retorna_todos_temas");
+                if (!response.IsSuccessStatusCode)
+                    return null;
 
+                var resultado = await response.Content.ReadFromJsonAsync<List<ThemeModel>>();
+                return resultado;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
-            //public async Task<UsuarioResponseDTO?> Login(LoginDTO dto)
-            //{
-            //    var request = new HttpRequestMessage(HttpMethod.Post, "/rest/v1/rpc/retorna_usuario");
-            //    request.Content = JsonContent.Create(new
-            //    {
-            //        p_user_login = dto.Login,
-            //        p_user_password = dto.Password
-            //    });
+        public async Task<List<UserModel>?> RetornaTodosUsuariosAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("/rest/v1/rpc/retorna_todos_usuarios");
+                if (!response.IsSuccessStatusCode)
+                    return null;
 
-            //    var response = await _httpClient.SendAsync(request);
+                var resultado = await response.Content.ReadFromJsonAsync<List<UserModel>>();
+                return resultado;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<List<ShipModel>?> RetornaTodosBarcosAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("/rest/v1/rpc/retorna_todos_barcos");
+                if (!response.IsSuccessStatusCode)
+                    return null;
 
-            //    Console.WriteLine(response);
-            //    string responseBody = await response.Content.ReadAsStringAsync();
-            //    Console.WriteLine($"SUPABASE LOGIN: {(int)response.StatusCode} - {responseBody}");
+                var resultado = await response.Content.ReadFromJsonAsync<List<ShipModel>>();
+                return resultado;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
-            //    if (!response.IsSuccessStatusCode)
-            //        return null;
+        public async Task<List<BombModel>?> RetornaTodasBombasAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("/rest/v1/rpc/retorna_todas_bombas");
+                if (!response.IsSuccessStatusCode)
+                    return null;
 
-            //    var lista = await response.Content.ReadFromJsonAsync<List<UsuarioResponseDTO>>();
-            //    var usuario = lista?.FirstOrDefault();
-            //    return usuario;
-            //}
-
-
+                var resultado = await response.Content.ReadFromJsonAsync<List<BombModel>>();
+                return resultado;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

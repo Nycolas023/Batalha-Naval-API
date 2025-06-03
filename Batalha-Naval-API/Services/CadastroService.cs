@@ -34,6 +34,7 @@ namespace Batalha_Naval_API.Services
                 p_image = ship.Image,
                 p_name = ship.Name,
                 p_desc = ship.Desc,
+                p_size = ship.Size,
                 p_theme_id = ship.Theme_id,
             });
         }

@@ -23,12 +23,12 @@ namespace Batalha_Naval_API.Models.SelectModels
         public string?  PresentTheme { get; set; }
 
         [JsonPropertyName("user_match_victory")]
-        public int MatchVictory { get; set; }
+        public int? MatchVictory { get; set; }
 
         [JsonPropertyName("user_match_defeat")]
-        public int MatchDefeat { get; set; }
+        public int? MatchDefeat { get; set; }
 
         [JsonPropertyName("user_match_boats_sunk")]
-        public int MatchBoatsSunk { get; set; }
+        public int? MatchBoatsSunk { get; set; }
     }
 }
