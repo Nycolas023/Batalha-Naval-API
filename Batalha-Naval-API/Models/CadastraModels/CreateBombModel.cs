@@ -6,6 +6,7 @@
         public decimal Price { get; set; }
         public string Image { get; set; } = null!;
         public string Desc { get; set; } = null!;
+        //public int Type { get; set; }
     }
 
 }

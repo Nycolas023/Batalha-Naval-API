@@ -43,6 +43,7 @@ namespace Batalha_Naval_API.Services
         {
             await _httpClient.PostAsJsonAsync("/rest/v1/rpc/criar_bomba", new
             {
+                //p_type = bomb.Type
                 p_name = bomb.Name,
                 p_price = bomb.Price,
                 p_image = bomb.Image,

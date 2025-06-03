@@ -80,6 +80,14 @@ namespace Batalha_Naval_API.Controllers
             return Ok(usuario);
         }
 
+        [HttpPost("temaFoiComprado")]
+        public async Task<ActionResult<ThemeQuantityModel>> RetornaTemaComprado([FromBody] TemaCompradoDTO temaComprado)
+        {
+            var tema = await _procService.RetornaTemaCompradoAsync(temaComprado);
+            if (tema == null) return Unauthorized();
+            return Ok(tema);
+        }
+
 
         //[HttpPost("login")]
         //public async Task<ActionResult<UserModel>> Login([FromBody] LoginDTO dto)
