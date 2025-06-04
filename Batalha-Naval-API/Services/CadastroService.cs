@@ -43,11 +43,11 @@ namespace Batalha_Naval_API.Services
         {
             await _httpClient.PostAsJsonAsync("/rest/v1/rpc/criar_bomba", new
             {
-                //p_type = bomb.Type
                 p_name = bomb.Name,
                 p_price = bomb.Price,
                 p_image = bomb.Image,
-                p_desc = bomb.Desc
+                p_desc = bomb.Desc,
+                p_bomb_type = bomb.Type,
             });
         }
 
@@ -58,6 +58,7 @@ namespace Batalha_Naval_API.Services
                 p_image = theme.Image,
                 p_name = theme.Name,
                 p_price = theme.Price,
+                p_preview  = theme.Preview,
             });
         }
     }

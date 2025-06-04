@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using Batalha_Naval_API.DTOs;
+using Batalha_Naval_API.Models.ConsultaModels;
 using Batalha_Naval_API.Models.SelectModels;
 using Batalha_Naval_API.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -80,10 +81,18 @@ namespace Batalha_Naval_API.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost("temaFoiComprado")]
-        public async Task<ActionResult<ThemeQuantityModel>> RetornaTemaComprado([FromBody] TemaCompradoDTO temaComprado)
+        [HttpPost("temasComprados")]
+        public async Task<ActionResult<ThemeBought>> RetornaTemaComprado([FromBody] TemaCompradoDTO temaComprado)
         {
             var tema = await _procService.RetornaTemaCompradoAsync(temaComprado);
+            if (tema == null) return Unauthorized();
+            return Ok(tema);
+        }
+
+        [HttpPost("BarcoPorTamanho")]
+        public async Task<ActionResult<ShipImageModel>> RetornaBarcoPorTamanho([FromBody] ShipImageBySizeDTO tamanhoBarco)
+        {
+            var tema = await _procService.RetornaBarcoPorTamanhoAsync(tamanhoBarco);
             if (tema == null) return Unauthorized();
             return Ok(tema);
         }

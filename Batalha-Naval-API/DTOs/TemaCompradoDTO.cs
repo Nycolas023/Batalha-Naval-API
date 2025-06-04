@@ -3,5 +3,6 @@
     public class TemaCompradoDTO
     {
         public int IdUsuario { get; set; }
+
     }
 }

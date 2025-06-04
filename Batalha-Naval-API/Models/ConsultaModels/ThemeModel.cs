@@ -13,6 +13,9 @@ namespace Batalha_Naval_API.Models.SelectModels
         [JsonPropertyName("theme_name")]
         public string? ThemeName { get; set; }
 
+        [JsonPropertyName("theme_preview")]
+        public string Preview { get; set; } = string.Empty;
+
         [JsonPropertyName("theme_price")]
         public double ThemePrice { get; set; }
 

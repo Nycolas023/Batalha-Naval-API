@@ -19,8 +19,8 @@ namespace Batalha_Naval_API.Models.SelectModels
         [JsonPropertyName("bomb_desc")]
         public string? BombDesc { get; set; }
 
-        //[JsonPropertyName("bomb_type")]
-        //public int BombType { get; set; }
+        [JsonPropertyName("bomb_type")]
+        public int BombType { get; set; }
     }
 
 }

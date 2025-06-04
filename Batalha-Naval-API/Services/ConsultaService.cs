@@ -1,4 +1,5 @@
 ﻿using Batalha_Naval_API.DTOs;
+using Batalha_Naval_API.Models.ConsultaModels;
 using Batalha_Naval_API.Models.SelectModels;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -166,7 +167,7 @@ namespace Batalha_Naval_API.Services
             }
         }
 
-        public async Task<List<ThemeQuantityModel>?> RetornaTemaCompradoAsync(TemaCompradoDTO dto)
+        public async Task<List<ThemeBought>?> RetornaTemaCompradoAsync(TemaCompradoDTO dto)
         {
             var jsonBody = new
             {
@@ -174,11 +175,11 @@ namespace Batalha_Naval_API.Services
             };
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/retornar_temas_comprados", jsonBody);
+                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/listar_temas_com_status_compra", jsonBody);
                 if (!response.IsSuccessStatusCode)
                     return null;
 
-                var resultado = await response.Content.ReadFromJsonAsync<List<ThemeQuantityModel>>();
+                var resultado = await response.Content.ReadFromJsonAsync<List<ThemeBought>>();
                 return resultado;
             }
             catch
@@ -186,5 +187,28 @@ namespace Batalha_Naval_API.Services
                 return null;
             }
         }
+
+        public async Task<List<ShipImageModel>?> RetornaBarcoPorTamanhoAsync(ShipImageBySizeDTO dto)
+        {
+            var jsonBody = new
+            {
+                p_theme_id = dto.ThemeId,
+                p_ship_size = dto.ShipSize
+            };
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/buscar_ship_por_tema_e_tamanho", jsonBody);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var resultado = await response.Content.ReadFromJsonAsync<List<ShipImageModel>>();
+                return resultado;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }
