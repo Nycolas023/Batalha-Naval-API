@@ -188,6 +188,27 @@ namespace Batalha_Naval_API.Services
             }
         }
 
+        public async Task<List<BombBoughtModel>?> RetornaBombasCompradasAsync(BombaCompradaDTO dto)
+        {
+            var jsonBody = new
+            {
+                p_user_id = dto.IdUsuario,
+            };
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("/rest/v1/rpc/retorna_bombas_compradas", jsonBody);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var resultado = await response.Content.ReadFromJsonAsync<List<BombBoughtModel>>();
+                return resultado;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<List<ShipImageModel>?> RetornaBarcoPorTamanhoAsync(ShipImageBySizeDTO dto)
         {
             var jsonBody = new

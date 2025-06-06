@@ -89,6 +89,14 @@ namespace Batalha_Naval_API.Controllers
             return Ok(tema);
         }
 
+        [HttpPost("bombasCompradas")]
+        public async Task<ActionResult<BombBoughtModel>> RetornaBombasCompradas([FromBody] BombaCompradaDTO bombasCompradas)
+        {
+            var tema = await _procService.RetornaBombasCompradasAsync(bombasCompradas);
+            if (tema == null) return Unauthorized();
+            return Ok(tema);
+        }
+
         [HttpPost("BarcoPorTamanho")]
         public async Task<ActionResult<ShipImageModel>> RetornaBarcoPorTamanho([FromBody] ShipImageBySizeDTO tamanhoBarco)
         {
