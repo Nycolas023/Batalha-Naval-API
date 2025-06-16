@@ -1,4 +1,4 @@
-﻿namespace Batalha_Naval_API.Models.PartidaJogadasModel
+﻿namespace Batalha_Naval_API.Models
 {
     public class PartidasJogadasModel
     {

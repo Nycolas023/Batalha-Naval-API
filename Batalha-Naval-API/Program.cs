@@ -38,7 +38,7 @@ builder.Services.AddScoped<CompraService>();
 
 
 builder.Services.AddSingleton(supabaseClient);
-builder.Services.AddScoped<PartidasJogadasService>();
+builder.Services.AddScoped<AlteracaoService>();
 
 builder.Services.AddSingleton(supabaseClient);
 builder.Services.AddScoped<DeletesService>();
