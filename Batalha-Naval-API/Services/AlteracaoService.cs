@@ -51,7 +51,7 @@ namespace Batalha_Naval_API.Services
 
         public async Task AtualizarBombas(BombaUpdateModel model)
         {
-            await _supabase.Rpc("atualizar_resultados", new
+            await _supabase.Rpc("atualizar_bomba", new
             {
                 p_bomb_id = model.BombId,
                 p_image = model.BombImage,
